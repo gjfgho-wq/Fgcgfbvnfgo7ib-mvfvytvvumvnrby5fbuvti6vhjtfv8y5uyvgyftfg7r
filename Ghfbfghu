@@ -1,0 +1,55 @@
+--[[ obfvortix v1.0.0 ]]
+-- generated with https://obfvortix (Lua 5.1 / Roblox executors)
+local _YO24GB2nX = 311220582
+local _gy9iflZzar = _YO24GB2nX
+local function _bgfEN_Fb4()
+  _gy9iflZzar = (_gy9iflZzar * 1664525 + 1013904223) % 4294967296
+  return _gy9iflZzar
+end
+local _ztHHUQv_
+do
+  local t = {
+    "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9","+","/"
+  }
+  for i = 64, 2, -1 do
+    local j = _bgfEN_Fb4() % i + 1
+    t[i], t[j] = t[j], t[i]
+  end
+  _ztHHUQv_ = t
+end
+local _rQY1bFOi = {}
+for i = 1, 64 do _rQY1bFOi[_ztHHUQv_[i]] = i - 1 end
+local _ckluItLi = "RaLnf1W3hoZ9fsn0A6pZQYn3H1C1fFSV+on3H1CBQOI/haPBHa5DhaLBHgpBAduX"
+    .. "h1S9RaLbA6uwfxrnh1k/hoPdJbfGh0WDfmeX+OYXMgY="
+local function _aDIedNw(str)
+  local out = {}
+  local i = 1
+  local char = string.char
+  local concat = table.concat
+  local floor = math.floor
+  local idx = _rQY1bFOi
+  while i <= #str do
+    local a = idx[str:sub(i, i)]
+    local b = idx[str:sub(i + 1, i + 1)]
+    local c = str:sub(i + 2, i + 2)
+    local d = str:sub(i + 3, i + 3)
+    local n = a * 262144 + b * 4096
+    if c ~= "" and c ~= "=" then
+      n = n + idx[c] * 64
+      if d ~= "" and d ~= "=" then
+        n = n + idx[d]
+        out[#out + 1] = char(floor(n / 65536) % 256, floor(n / 256) % 256, n % 256)
+      else
+        out[#out + 1] = char(floor(n / 65536) % 256, floor(n / 256) % 256)
+      end
+    else
+      out[#out + 1] = char(floor(n / 65536) % 256)
+    end
+    i = i + 4
+  end
+  return concat(out)
+end
+local _G6NeDT1_ = _aDIedNw(_ckluItLi)
+local _OwhQttq2 = loadstring or load
+_OwhQttq2(_G6NeDT1_)()
+-- end obfvortix
